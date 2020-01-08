@@ -2,7 +2,9 @@
 Simple Python Password Generator
 
 Requirements: `pip install pyperclip random`
+
 *pyperclip 
+
 *random
 
 Usage: `python pgen.py`
