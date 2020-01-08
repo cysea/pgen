@@ -1,7 +1,9 @@
 def main():
 	chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!@#$%^&*'
 
-        print colored("\n==========================")
+        os.system('cls' if os.name == 'nt' else 'clear')
+        
+        print colored("=======================================")
 	print colored("\n> > > The Formatting is:", 'green')
 	print colored("> > > Fully Randomized.", 'green')
 	
@@ -24,8 +26,15 @@ def main():
 def end():
 	
 	print colored("\n[+] Copied to clipboard!", 'green')
-        print colored("\nPress ENTER for a new password...", 'red')
+
+        print colored("\n[?] Press ENTER for a new password...", 'red')
+        print colored("      Or anything else to quit :)", 'green')
+
+        print colored("\n=======================================")
+        
 	n = raw_input()
+        
+        
 
         if n == '':
 	    main()
@@ -36,6 +45,7 @@ if __name__ == "__main__":
     import pyperclip
     import random
     import sys
+    import os
     from termcolor import colored
     main()
 
