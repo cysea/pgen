@@ -1,17 +1,21 @@
-def rand():
-
+def main():
 	chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!@#$%^&*'
 
-	print ("\n> > > The Formatting is:")
-	print ("> > > Fully Randomized.")
+        print colored("\n==========================")
+	print colored("\n> > > The Formatting is:", 'green')
+	print colored("> > > Fully Randomized.", 'green')
 	
-	length = 20
-	password = ''
+        try:
+            length = int(sys.argv[1])
+        except:
+            print colored("\n[*] No arguments passed, password length set to 20.", 'yellow')
+            length = 20
 
+        password = ''
         for c in range(length):
-		password += random.choice(chars)
+	    password += random.choice(chars)
 
-	print ("\nThe Password is: " + password)
+        print ("\n[+] The Password is: \033[4m{0}\033[0m".format(password))
 			
 	pyperclip.copy(password)
 		
@@ -19,15 +23,19 @@ def rand():
 
 def end():
 	
-	print ("\nPassword Copied To Clipboard!")	
-	n = raw_input("Press ENTER for a new password...\n")
+	print colored("\n[+] Copied to clipboard!", 'green')
+        print colored("\nPress ENTER for a new password...", 'red')
+	n = raw_input()
 
         if n == '':
-	    rand()
+	    main()
         else:
             exit()
 
 if __name__ == "__main__":
-	import pyperclip
-	import random
-        rand()
+    import pyperclip
+    import random
+    import sys
+    from termcolor import colored
+    main()
+
