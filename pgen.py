@@ -1,51 +1,54 @@
+import pyperclip
+import random
+import sys
+import os
+from termcolor import colored
+
 def main():
-	chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!@#$%^&*'
+    chars = '1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz!@#$%^&*'
 
-        os.system('cls' if os.name == 'nt' else 'clear')
+    os.system('cls' if os.name == 'nt' else 'clear')
         
-        print colored("=======================================")
-	print colored("\n> > > The Formatting is:", 'green')
-	print colored("> > > Fully Randomized.", 'green')
+    print colored("=======================================")
+
+    print colored("\n> > >",'red'), colored("The Formatting is Fully Randomized",'white'), colored("< < <",'red')
+    #print colored("> > > Fully Randomized.",'green')
 	
-        try:
-            length = int(sys.argv[1])
-        except:
-            print colored("\n[*] No arguments passed, password length set to 20.", 'yellow')
-            length = 20
+    try:
+        length = int(sys.argv[1])
+        print colored("\n[*]",'yellow'), colored("Password length set to [",'white'), colored(sys.argv[1],'yellow'), colored("]",'white')
+    except:
+        print colored("\n[*]",'yellow'), colored("No arguments passed, password length set to [",'white'), colored("20",'yellow'), ("]")
+        length = 20
 
-        password = ''
-        for c in range(length):
-	    password += random.choice(chars)
+    password = ''
+    for c in range(length):
+	password += random.choice(chars)
 
-        print ("\n[+] The Password is: \033[4m{0}\033[0m".format(password))
+    print colored("\n[+]",'green'), ("Password:"), colored("\033[4m{0}\033[0m".format(password),'white')
 			
-	pyperclip.copy(password)
+    pyperclip.copy(password)
 		
-	end()
+    end()
 
 def end():
-	
-	print colored("\n[+] Copied to clipboard!", 'green')
+    print colored("\n[+]",'green'), ("Copied to clipboard!")
 
-        print colored("\n[?] Press ENTER for a new password...", 'red')
-        print colored("      Or anything else to quit :)", 'green')
+    print colored("\n[*] ",'yellow'), colored("Press ",'white'), colored("ENTER ",'red'),colored("for a new password...",'white')
+    print colored("        Or ",'white'), colored("Ctrl+D",'red'), colored(" to quit :)",'white')
 
-        print colored("\n=======================================")
-        
+    print colored("\n=======================================")
+
+    try:
 	n = raw_input()
-        
-        
 
         if n == '':
 	    main()
-        else:
-            exit()
+        #else:
+        #    sys.exit()
+    except (KeyboardInterrupt, EOFError):
+        sys.exit()
 
 if __name__ == "__main__":
-    import pyperclip
-    import random
-    import sys
-    import os
-    from termcolor import colored
     main()
 
